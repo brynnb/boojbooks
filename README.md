@@ -1,5 +1,3 @@
-
-
 * **Create a books API using Laravel:** This was not necessary to the assumed traditional meaning of API, since I'm not using Vue. It would be a small step to add routing for the BookController in the `api.php` file and return data in JSON format if the given request was asking for JSON. 
 
 * **Create Postman collection and Vue app OR Laravel App:** I opted for simply making a Laravel app since that's more the scope of the job role for which I'm applying. 
