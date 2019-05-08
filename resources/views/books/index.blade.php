@@ -1,6 +1,11 @@
 @extends('master')
 
 @section('content')
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <a class="btn btn-primary float-right" href="{{route('books.create')}}" role="button">Add Book</a>
     <br/>
     <br/>

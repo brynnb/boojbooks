@@ -1,4 +1,4 @@
-#Booj Books Exercise
+# Booj Books Exercise
 
 * **Create Postman collection and Vue app OR Laravel App:** I opted for simply making a Laravel app since that's more the scope of the job role for which I'm applying. 
 
@@ -31,3 +31,4 @@ If actually building a customer application, I would:
 * Add a date picker widget for publication date entry
 * Add more robust validation for form input
 * Add commenting on code that wasn't self explanatory. There were only a couple instances in this particular exercise that needed it and I added it.
+* Add a live refresh of table data after deleting a book rather than reloading the page

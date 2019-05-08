@@ -1,5 +1,6 @@
 require('./bootstrap');
 var tablesort = require('tablesort');
+var swal = require('sweetalert');
 
 $(document).ready(function () {
 
@@ -8,49 +9,54 @@ $(document).ready(function () {
         tablesort(bookTable);
     }
 
-    var csrfToken = $('meta[name="csrfToken"]').attr('content');
-
-    jQuery.ajaxSetup({headers: {'X-CSRF-Token': $('meta[name=csrfToken]').attr('content')}});
-
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
     $('.delete-book').on('click', function () {
 
         var id = $(this).data('id');
-
         var _this = $(this);
 
-        console.log($(this).data('id'));
-        //
-        // swal({
-        //     title: "Delete " + capitalizeFirstLetter(type) + "?",
-        //     text: "You will not be able to recover this " + type + "!",
-        //     type: "warning",
-        //     showCancelButton: true,
-        //     confirmButtonColor: "#DD6B55",
-        //     confirmButtonText: "Yes, delete it!",
-        //     closeOnConfirm: false,
-        //     html: false
-        // }, function(){
-        //     $.ajax({
-        //         url: '/' + type + '/' + id,
-        //         type: 'post',
-        //         data: {_method: 'delete', _token: csrfToken},
-        //         success: function () {
-        //             _this.parent().parent().parent().fadeOut(); //TODO: make this more versatile
-        //             swal("Deleted!",
-        //                 "Your " + type + " has been deleted.",
-        //                 "success");
-        //             var slotsPrev = $('#slotsUsed').html();
-        //             $('#slotsUsed').html(slotsPrev - 1);
-        //         },
-        //         error: function (){
-        //             swal("Error!",
-        //                 "There was a problem deleting your " + type + ".",
-        //                 "error");
-        //         }
-        //     });
-        //
-        // });
+        swal({
+                title: "Delete this book?",
+                buttons: {
+                    cancel: {
+                        text: "Cancel",
+                        visible: true,
+                        closeModal: true,
+                    },
+                    confirm: {
+                        text: "Delete",
+                        closeModal: true
+                    }
+                }
+            }
+        ).then(value => {
+            if (!value) throw null;
+
+            $.ajax({
+                url: '/books/' + id,
+                type: 'post',
+                data: {_method: 'delete', _token: csrfToken},
+                success: function () {
+                    swal("Deleted!",
+                        "The book has been deleted.",
+                        "success").then(value => {
+                        location.reload();
+                    });
+                },
+                error: function () {
+                    throw new Error('Deletion failed');
+                }
+            });
+
+        }).catch(err => {
+            if (err) {
+                swal("Deletion Failed", "The request failed!", "error");
+            } else {
+                swal.stopLoading();
+                swal.close();
+            }
+        });
 
     });
 
