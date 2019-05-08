@@ -10,7 +10,7 @@
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Publication Date</th>
-            <th scope="col"></th>
+            <th scope="col" data-sort-method='none'></th>
         </tr>
         </thead>
         <tbody>

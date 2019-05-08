@@ -1,6 +1,8 @@
-* **Create a books API using Laravel:** This was not necessary to the assumed traditional meaning of API, since I'm not using Vue. It would be a small step to add routing for the BookController in the `api.php` file and return data in JSON format if the given request was asking for JSON. 
+#Booj Books Exercise
 
 * **Create Postman collection and Vue app OR Laravel App:** I opted for simply making a Laravel app since that's more the scope of the job role for which I'm applying. 
+
+* **Create a books API using Laravel:** This was not necessary to the assumed traditional meaning of API, since I'm not using Vue. It would be a small step to add routing for the BookController in the `api.php` file and return data in JSON format if the given request was asking for JSON. 
 
 * **Add or remove books from the list:** Adding books is done through the "Add Book" button and takes the user to a new page. Deleting a book is done with a jQuery confirmation and AJAX call, which I thought was an appropriate solution given that the job role listed a desire for jQuery experience
 
@@ -16,7 +18,7 @@
 
 If actually building a customer application, I would:
 
-* Have further discussed the requirements to ensure it meets the needs of the customer
+* Have further discussed the requirements to ensure it meets the needs of the customer or stakeholders
 * Probably implement a Vue interface to make adding and removing books more seamless
 * In the absence of Vue, use jQuery and modals for adding books
 * Use authentication and check privileges before accessing, adding, and removing books
@@ -25,6 +27,7 @@ If actually building a customer application, I would:
 * Create documentation for future developers, especially on deployment steps
 * Have tests that are more holistic assuming there is more complicated behavior later implemented
 * Create a separate table and model for Authors, since a real application would probably want the ability to view all books by a particular author
+* Create a "book list" table and model so that books are only entered once and then added by ID to a user's list
 * Add a date picker widget for publication date entry
 * Add more robust validation for form input
-* Add commenting on code that wasn't self explanatory. There were only a couple instances in this particular exercise
+* Add commenting on code that wasn't self explanatory. There were only a couple instances in this particular exercise that needed it and I added it.

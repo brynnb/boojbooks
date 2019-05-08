@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Book::class, function (Faker $faker) {
     return [
         'title' => ucwords($faker->words(5, true)),
-        'author' => $faker->firstName . ' ' . $faker->lastName,
+        'author' => $faker->lastName. ', ' . $faker->firstName ,
         'date_publication' => $faker->dateTime($max = 'now')
     ];
 });

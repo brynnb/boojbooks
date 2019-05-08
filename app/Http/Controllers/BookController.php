@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Book;
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller
 {
@@ -94,6 +95,7 @@ class BookController extends Controller
     {
         $book = Book::findOrFail($id);
         $book->delete();
+        Log::info($book);
         return redirect('books')->with('status', 'Book deleted!');
     }
 }

@@ -14,6 +14,17 @@ class Book extends Model
     //Used to convert a date only (no time) user input to a proper Carbon date input
     public function setDatePublicationAttribute($date)
     {
-        $this->attributes['date_publication'] = date("Y-m-d",strtotime($date));
+        //Handle input both from Carbon object at seeding and also text input at user creation
+        if (is_string($date)) {
+            $this->attributes['date_publication'] = date("Y-m-d", strtotime($date));
+        } else {
+            $this->attributes['date_publication'] = $date;
+        }
+    }
+
+    //Make date prettier and exclude empty timestamp
+    public function getDatePublicationAttribute($date)
+    {
+        return date("m-d-Y", strtotime($date));
     }
 }
